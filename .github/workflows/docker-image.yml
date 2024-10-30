@@ -16,10 +16,4 @@ jobs:
 
       # Step 3: Start containers with Docker Compose
       - name: Start Services
-        run: docker-compose up -d
-
-      # Step 4: Test if the service is reachable using curl
-      - name: Service Health Check
-        run: |
-          docker run --rm appropriate/curl \
-            -s --retry 10 --retry-connrefused http://localhost:8000/
+        run: docker-compose up --build

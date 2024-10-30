@@ -1,19 +1,11 @@
-name: Docker Compose Action
-
-on: [push]
-
+name: app
+on: push
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: Suhas_assesment/Assement
-
-      - name: Run docker-compose
-        uses: Suhas_assesment/Assement
-        with:
-          compose-file: "./Suhas_assesment/Assement/docker-compose.yml"
-
-      - name: Execute tests in the running services
-        run: |
-          docker-compose exec app
+      - uses: actions/checkout@v2
+      - name: Test
+        run: docker-compose up -d
+      - name: Test
+        run: docker run --network appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/

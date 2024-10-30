@@ -1,0 +1,11 @@
+name: Suhas_assesment
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: app
+        run: docker-compose up -d
+      - name: app
+        run: docker run --network container:assignment/curl -s --retry 10 --retry-connrefused http://localhost:8000/

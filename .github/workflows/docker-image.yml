@@ -8,4 +8,4 @@ jobs:
       - name: app
         run: docker-compose up -d
       - name: app
-        run: docker run --network container:assignment/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+        run: docker run --network container:app/curl -s --retry 10 --retry-connrefused http://localhost:8000/

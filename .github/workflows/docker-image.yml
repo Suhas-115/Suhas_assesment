@@ -1,11 +1,19 @@
 name: app
 on: push
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out the code from the repository
       - uses: actions/checkout@v2
-      - name: Test
+
+      # Step 2: Start containers in detached mode with Docker Compose
+      - name: Start Services
         run: docker-compose up -d
-      - name: Test
-        run: docker run --network appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+
+      # Step 3: Test if the service is reachable using curl
+      - name: Service Health Check
+        run: |
+          docker run --rm appropriate/curl \
+            -s --retry 10 --retry-connrefused http://localhost:8000/

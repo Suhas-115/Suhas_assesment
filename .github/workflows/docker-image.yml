@@ -1,11 +1,19 @@
-name: Suhas_assesment
-on: push
+name: Docker Compose Action
+
+on: [push]
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: app
-        run: docker-compose up -d
-      - name: app
-        run: docker run --network container:app/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+      - uses: actions/checkout@v4
+
+      - name: Run docker-compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker/docker-compose.yml"
+
+      - name: Execute tests in the running services
+        run: |
+          docker-compose exec test-app pytest

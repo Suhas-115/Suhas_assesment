@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: Suhas_assesment/Assement
 
       - name: Run docker-compose
-        uses: Suhas-115/compose-action@v2.0.1
+        uses: Suhas_assesment/Assement
         with:
-          compose-file: "./docker-compose.yml"
+          compose-file: "./Suhas_assesment/Assement/docker-compose.yml"
 
       - name: Execute tests in the running services
         run: |
-          docker-compose exec test-app pytest
+          docker-compose exec app

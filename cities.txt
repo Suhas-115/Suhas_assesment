@@ -2,3 +2,5 @@ delhi-50
 mumbai-60
 bangalore
 chennnai
+Bombay 
+Pune

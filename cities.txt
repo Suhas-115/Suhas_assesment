@@ -1,4 +1,4 @@
 delhi-50
 mumbai-60
-bangalore-22
-chennnai-32
+bangalore
+chennnai

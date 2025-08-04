@@ -6,3 +6,5 @@ Bombay -25
 Pune-90
 
 
+bangalore-1c
+chennnai-2c
